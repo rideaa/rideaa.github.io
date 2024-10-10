@@ -1,12 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>jquery.Thailand</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
+    <link rel="stylesheet" href="./uikit.css">
+    <link rel="stylesheet" href="./jquery.Thailand.min.css">
+
+    <style>
+        a, h1, h2, .h2{
+            font-family: 'Kanit', sans-serif !important;
+            line-height: 1em;
+        }
+    </style>    
+
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    <div class="uk-container uk-padding">
+        <h2>โหมดค้นหา</h2>
+        <div id="loader">
+            <div uk-spinner></div> รอสักครู่ กำลังโหลดฐานข้อมูล...
+        </div>
+        <form id="demo2" class="demo" style="display:none;" autocomplete="off">
+            <label class="h2">ค้นหาที่อยู่ของคุณ</label>
+            <small>กรอกอย่างใดอย่างหนึ่ง ตำบล, อำเภอ, จังหวัด หรือ รหัสไปรษณีย์</small>
+            <input name="search" class="uk-input uk-width-1-1" type="text">
+            <div id="demo2-output" class="uk-margin"></div>
+        </form>
+    </div>
 
+    <script type="text/javascript" src="./data/jquery-3.2.1.min.js"></script>    
+    <script type="text/javascript" src="./data/uikit.min.js"></script>
+    <script type="text/javascript" src="./data/JQL.min.js"></script>
+    <script type="text/javascript" src="./data/typeahead.bundle.js"></script>    
+    <script type="text/javascript" src="./data/jquery.Thailand.min.js"></script>    
+    <script type="text/javascript">
+
+        $.Thailand({
+            database: './data/db.json', 
+            $search: $('#demo2 [name="search"]'),
+
+            onDataFill: function(data){
+                console.log(data)
+                var html = '<b>ที่อยู่:</b> ตำบล' + data.district + ' อำเภอ' + data.amphoe + ' จังหวัด' + data.province + ' ' + data.zipcode;
+                $('#demo2-output').prepend('<div class="uk-alert-warning" uk-alert><a class="uk-alert-close" uk-close></a>' + html + '</div>');
+            },
+            onLoad: function(){
+                console.info('Autocomplete is ready!');
+                $('#loader, .demo').toggle();
+            }
+
+        });
+    </script>
+    
 </body>
 </html>
