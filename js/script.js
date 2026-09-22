@@ -80,8 +80,8 @@
     });
   }
 
-  setupTitleEditor(titleMain, "X-SEA KHANON");
-  setupTitleEditor(titleSub, "FISHING COMP. #1");
+  setupTitleEditor(titleMain, "X-SEA KHANOM");
+  setupTitleEditor(titleSub, "FISHING COMPETITION #1");
 
   function loadPrizes() {
     try {
