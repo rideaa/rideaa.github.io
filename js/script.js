@@ -43,36 +43,45 @@
   const toggleDetailsBtn = document.getElementById("toggleDetailsBtn");
   const prizeDetails = document.getElementById("prizeDetails");
 
-  const pageTitle = document.getElementById("pageTitle");
+  const titleMain = document.getElementById("titleMain");
+  const titleSub = document.getElementById("titleSub");
 
   function loadPageTitle() {
     try {
-      const saved = localStorage.getItem("prizeWheel.title");
-      if (saved && saved.trim()) pageTitle.textContent = saved;
+      const savedMain = localStorage.getItem("prizeWheel.titleMain");
+      const savedSub = localStorage.getItem("prizeWheel.titleSub");
+      if (savedMain && savedMain.trim()) titleMain.textContent = savedMain;
+      if (savedSub && savedSub.trim()) titleSub.textContent = savedSub;
     } catch (e) { /* ignore, keep default */ }
   }
 
   function savePageTitle() {
     try {
-      localStorage.setItem("prizeWheel.title", pageTitle.textContent.trim());
+      localStorage.setItem("prizeWheel.titleMain", titleMain.textContent.trim());
+      localStorage.setItem("prizeWheel.titleSub", titleSub.textContent.trim());
     } catch (e) { /* storage unavailable, ignore */ }
   }
 
-  pageTitle.addEventListener("blur", () => {
-    if (!pageTitle.textContent.trim()) pageTitle.textContent = "Prize Wheel";
-    savePageTitle();
-  });
-  pageTitle.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
+  function setupTitleEditor(element, defaultText) {
+    element.addEventListener("blur", () => {
+      if (!element.textContent.trim()) element.textContent = defaultText;
+      savePageTitle();
+    });
+    element.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        element.blur();
+      }
+    });
+    element.addEventListener("paste", (e) => {
       e.preventDefault();
-      pageTitle.blur();
-    }
-  });
-  pageTitle.addEventListener("paste", (e) => {
-    e.preventDefault();
-    const text = (e.clipboardData || window.clipboardData).getData("text/plain");
-    document.execCommand("insertText", false, text);
-  });
+      const text = (e.clipboardData || window.clipboardData).getData("text/plain");
+      document.execCommand("insertText", false, text);
+    });
+  }
+
+  setupTitleEditor(titleMain, "X-SEA KHANON");
+  setupTitleEditor(titleSub, "FISHING COMP. #1");
 
   function loadPrizes() {
     try {
