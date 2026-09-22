@@ -97,7 +97,6 @@
     left: 3%;
     top: 50%;
     transform: translateY(-50%);
-    max-width: 58%;
     text-align: left;
     font-size: clamp(13px, 4.2vw, 26px);
     font-weight: 400;
@@ -571,5 +570,5 @@
 .title-sub {
   display: block;
   font-weight: 400;
-  font-size: 0.75em;
+  font-size: 0.8em;
 }
