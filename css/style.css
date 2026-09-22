@@ -562,3 +562,14 @@
     #wheelCanvas { transition: none !important; }
     .result-card { animation: none; }
   }
+
+.title-main {
+  display: block;
+  font-weight: 700;
+}
+
+.title-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75em;
+}
