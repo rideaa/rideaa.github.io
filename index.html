@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prize Wheel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<audio id="cheerAudio" preload="auto" src="audio/cheer-fanfare.mp3"></audio>
+<div class="wrap">
+  <div class="brand-bar">
+    <div class="brand-banner">
+      <img class="brand-logo" src="images/brand-logo.png" alt="X-SEA Khanom Fishing Competition #1, Suzuki Marine">
+      <h1 id="pageTitle" contenteditable="true" spellcheck="false" role="textbox" aria-label="Wheel title, click to edit">Prize Wheel</h1>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="wheel-side">
+      <div class="wheel-stage">
+        <svg class="pointer" viewBox="0 0 34 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 40 L2 10 Q2 0 12 0 L22 0 Q32 0 32 10 Z" fill="var(--accent)" stroke="var(--bg-2)" stroke-width="2"/>
+        </svg>
+        <canvas id="wheelCanvas" width="600" height="600"></canvas>
+        <div class="hub" id="spinHub" role="button" tabindex="0" aria-label="Spin the wheel"><img class="hub-logo" src="images/suzuki-hub-logo.png" alt="Suzuki Marine"></div>
+        <div class="confetti-layer" id="confettiLayer"></div>
+        <div class="paper-shoot-layer" id="paperShootLayer"></div>
+        <div class="winner-overlay" id="winnerOverlay">
+          <div class="winner-card">
+            <span class="winner-label">Winner</span>
+            <div class="winner-name" id="winnerName"></div>
+            <div class="winner-actions">
+              <button class="winner-received" id="winnerReceived">Received</button>
+              <button class="winner-close" id="winnerClose">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="spin-hint">Tap the center logo to spin</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Prizes</h2>
+        <button class="toggle-btn" id="toggleDetailsBtn">Hide details</button>
+      </div>
+      <div id="prizeDetails">
+        <p class="sub">Bigger weight = bigger slice = better odds.</p>
+        <div class="prize-list" id="prizeList"></div>
+        <button class="add-btn" id="addBtn">+ Add prize</button>
+        <button class="add-btn" id="shuffleBtn" style="margin-top: 8px;">Shuffle order</button>
+        <div class="panel-footer">
+          <span id="totalWeightLabel">6 prizes</span>
+          <button class="reset-link" id="resetBtn">Reset to defaults</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
