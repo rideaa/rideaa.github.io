@@ -5,6 +5,7 @@
     { name: "หมุนอีกครั้ง", weight: 10 },
     { name: "หมวก SUZUKI", weight: 5 },
     { name: "สายคล้องคอ", weight: 10 },
+    { name: "เสื้อ ECSTAR", weight: 5 },
     { name: "เสื้อแขนยาว", weight: 5 }
   ];
 
