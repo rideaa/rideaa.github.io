@@ -1,12 +1,12 @@
 (function () {
   const DEFAULT_PRIZES = [
     { name: "น้ำมันเครื่อง ECSTAR V7000", weight: 4 },
-    { name: "เสื้อชูชีพ", weight: 5 },
+    { name: "เสื้อชูชีพ SUZUKI", weight: 5 },
     { name: "หมุนอีกครั้ง", weight: 10 },
     { name: "หมวก SUZUKI", weight: 5 },
-    { name: "สายคล้องคอ", weight: 10 },
-    { name: "เสื้อ ECSTAR", weight: 5 },
-    { name: "เสื้อแขนยาว", weight: 5 }
+    { name: "สายคล้องคอ SUZUKI", weight: 10 },
+    { name: "เสื้อแขนยาว SUZUKI", weight: 5 },
+    { name: "เสื้อโปโล SUZUKI", weight: 5 }
   ];
 
   const PALETTE = [
