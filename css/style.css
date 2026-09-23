@@ -228,15 +228,16 @@
     .wheel-stage.celebrate #wheelCanvas { filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35)); }
   }
 
-  /* Paper-shoot cannons, fired from the base of the wheel when it lands
-     on a winner. Uses the same absolute/overflow:visible pattern as the
-     confetti burst above, which is proven to render reliably. */
+  /* Full-screen paper-shoot cannons, fired from the bottom corners when
+     the wheel lands on a winner. position:fixed keeps this out of the
+     normal document flow entirely, so its animated transforms can never
+     grow the page's scrollable area or cause layout/resize jank. */
   .paper-shoot-layer {
-    position: absolute;
-    inset: -40px;
+    position: fixed;
+    inset: 0;
     pointer-events: none;
     overflow: visible;
-    z-index: 7;
+    z-index: 60;
   }
 
   .paper-piece {
