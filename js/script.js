@@ -230,7 +230,7 @@
       ctx.textBaseline = "middle";
       ctx.fillStyle = contrastTextFor(sliceColor);
       const fontSize = Math.max(13, Math.min(20, 320 / prizes.length));
-      ctx.font = "400 " + fontSize + "px 'Bungee', sans-serif";
+      ctx.font = "600 " + fontSize + "px 'Prompt', sans-serif";
       const maxChars = sliceAngle < 0.35 ? 8 : 14;
       const lines = wrapLabel(p.name || "Prize", maxChars);
       const lineHeight = fontSize * 1.1;
@@ -584,4 +584,13 @@
   loadPageTitle();
   renderList();
   drawWheel();
+
+  // Canvas text is a raster snapshot: it doesn't repaint automatically
+  // once a web font finishes downloading, so the wheel labels can render
+  // in the fallback font on first load. Force a redraw once the font we
+  // actually use ('Prompt') is ready.
+  if (window.document && document.fonts && document.fonts.load) {
+    document.fonts.load("600 20px 'Prompt'").catch(() => {});
+    document.fonts.ready.then(() => { drawWheel(); }).catch(() => {});
+  }  
 })();
