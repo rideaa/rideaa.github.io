@@ -295,7 +295,7 @@
     if (delta < 0) delta += 360;
     const finalRotation = rotation + extraSpins * 360 + delta;
 
-    const duration = 3600 + Math.random() * 2200; // 3.6s - 5.8s, varies each spin
+    const duration = 3600 + Math.random() * 3000; // 3.6s - 6.6s, varies each spin
     const startTime = performance.now();
     const startRotation = rotation;
     const spinDistance = finalRotation - startRotation;
